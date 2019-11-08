@@ -26,14 +26,7 @@ public class BeatScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!hasStarted)
-        {
-            if (Input.anyKeyDown)
-            {
-                hasStarted = true;
-            }
-        }
-        else
+        if (hasStarted)
         {
             // Scroll the note
             transform.position -= new Vector3(0f, scrollSpeed * Time.deltaTime, 0f);

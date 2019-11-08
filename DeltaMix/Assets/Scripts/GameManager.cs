@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,46 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager Instance { get; private set; }
 
+    /// <summary>
+    /// The current score
+    /// </summary>
+    public int score = 0;
+
+    /// <summary>
+    /// The score multiplier
+    /// </summary>
+    public int scoreMultiplier = 1;
+
+    /// <summary>
+    /// The threshold for upping the multiplier
+    /// </summary>
+    public int multiplierThreshold = 4;
+
+    /// <summary>
+    /// Tracks if the multiplier threshold is met
+    /// </summary>
+    private int multiplierTracker = 1;
+
+    /// <summary>
+    /// The score given when a note is hit
+    /// </summary>
+    public int scorePerNote = 10;
+
+    /// <summary>
+    /// The current combo
+    /// </summary>
+    public int combo = 0;
+
+    /// <summary>
+    /// The text representing the combo
+    /// </summary>
+    public Text comboText;
+
+    /// <summary>
+    /// The text representing the score
+    /// </summary>
+    public Text scoreText;
+
     // Awake is called before Start
     private void Awake()
     {
@@ -33,6 +74,14 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        // Set defaults
+        scoreText.text = $"Score(x{ scoreMultiplier }): { score }";
+        comboText.text = $"Combo: { combo }";
     }
 
     // Update is called once per frame
@@ -50,10 +99,27 @@ public class GameManager : MonoBehaviour
     public void NoteHit()
     {
         Debug.Log($"Note hit");
+
+        score += scorePerNote * scoreMultiplier;
+        combo++;
+        if (multiplierTracker % multiplierThreshold == 0)
+        {
+            scoreMultiplier++;
+            multiplierTracker = 1;
+        }
+        else
+        {
+            multiplierTracker++;
+        }
+        scoreText.text = $"Score(x{ scoreMultiplier }): { score }";
+        comboText.text = $"Combo: { combo }";
     }
 
     public void NoteMissed()
     {
+        scoreMultiplier = 1;
+        multiplierTracker = 1;
+        combo = 0;
         Debug.Log("Note missed");
     }
 }

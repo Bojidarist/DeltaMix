@@ -49,6 +49,16 @@ public class GameManager : MonoBehaviour
     public int scorePerNote = 10;
 
     /// <summary>
+    /// The score given when a note is hit with good accuracy
+    /// </summary>
+    public int scorePerGoodNote = 25;
+
+    /// <summary>
+    /// The score given when a note is hit with perfect accuracy
+    /// </summary>
+    public int scorePerPerfectNote = 50;
+
+    /// <summary>
     /// The current combo
     /// </summary>
     public int combo = 0;
@@ -96,11 +106,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NormalHit()
+    {
+        score += scorePerNote * scoreMultiplier;
+        NoteHit();
+    }
+
+    public void GoodHit()
+    {
+        score += scorePerGoodNote * scoreMultiplier;
+        NoteHit();
+    }
+
+    public void PerfectHit()
+    {
+        score += scorePerPerfectNote * scoreMultiplier;
+        NoteHit();
+    }
+
     public void NoteHit()
     {
-        Debug.Log($"Note hit");
-
-        score += scorePerNote * scoreMultiplier;
         combo++;
         if (multiplierTracker % multiplierThreshold == 0)
         {

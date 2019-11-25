@@ -73,6 +73,18 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public Text scoreText;
 
+    // Note/Hit count
+    public float totalNotes;
+    public float normalHits;
+    public float goodHits;
+    public float perfectHits;
+    public float missedHits;
+
+    // Result screen
+    public GameObject resultScreen;
+    public Text resultAccuracyText, resultNormalHitsText, resultGoodHitsText,
+        resultPerfectHitsText, resultMissedHitsText, resultScoreText, resultRankText;
+
     // Awake is called before Start
     private void Awake()
     {
@@ -92,17 +104,60 @@ public class GameManager : MonoBehaviour
         // Set defaults
         scoreText.text = $"Score(x{ scoreMultiplier }): { score }";
         comboText.text = $"Combo: { combo }";
+        totalNotes = FindObjectsOfType<NoteObject>().Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown && !startPlaying)
+        if (!startPlaying)
         {
-            startPlaying = true;
-            beatScroller.hasStarted = true;
+            if (Input.anyKeyDown)
+            {
+                startPlaying = true;
+                beatScroller.hasStarted = true;
 
-            music.Play();
+                music.Play();
+            }
+        }
+        else
+        {
+            if (!resultScreen.activeInHierarchy && !music.isPlaying)
+            {
+                resultScreen.SetActive(true);
+
+                float acc = perfectHits / totalNotes;
+                string rank;
+                resultScoreText.text = score.ToString();
+                resultNormalHitsText.text = normalHits.ToString();
+                resultGoodHitsText.text = goodHits.ToString();
+                resultPerfectHitsText.text = perfectHits.ToString();
+                resultMissedHitsText.text = missedHits.ToString();
+                resultAccuracyText.text = $"{ (acc * 100).ToString("F1") }%";
+
+                if (0.95 < acc)
+                {
+                    rank = "S";
+                }
+                else if (0.90 < acc)
+                {
+                    rank = "A";
+                }
+                else if (0.85 < acc)
+                {
+                    rank = "B";
+                }
+                else if (0.80 < acc)
+                {
+                    rank = "C";
+                }
+                else
+                {
+                    rank = "D";
+                }
+
+                resultRankText.text = rank;
+            }
         }
     }
 
@@ -110,18 +165,21 @@ public class GameManager : MonoBehaviour
     {
         score += scorePerNote * scoreMultiplier;
         NoteHit();
+        normalHits++;
     }
 
     public void GoodHit()
     {
         score += scorePerGoodNote * scoreMultiplier;
         NoteHit();
+        goodHits++;
     }
 
     public void PerfectHit()
     {
         score += scorePerPerfectNote * scoreMultiplier;
         NoteHit();
+        perfectHits++;
     }
 
     private void NoteHit()
@@ -145,6 +203,8 @@ public class GameManager : MonoBehaviour
         scoreMultiplier = 1;
         multiplierTracker = 1;
         combo = 0;
+        comboText.text = $"Combo: { combo }";
+        missedHits++;
         Debug.Log("Note missed");
     }
 }

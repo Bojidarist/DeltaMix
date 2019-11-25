@@ -312,6 +312,30 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 102
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}
 --- !u!1001 &502598214
@@ -391,6 +415,30 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 102
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}
 --- !u!1 &519420028
@@ -686,6 +734,30 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 102
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}
 --- !u!1 &833632376
@@ -1384,6 +1456,30 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 107
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}
 --- !u!1001 &2018865132
@@ -1463,6 +1559,30 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 107
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}
 --- !u!1001 &3761316902283946557
@@ -1542,5 +1662,29 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 102
       objectReference: {fileID: 0}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: goodHitEffect
+      value: 
+      objectReference: {fileID: 2795814444272556117, guid: 7c9edf749edc87849ada6cf179772807,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2331390701921139908, guid: 2e03fae8c6136ed4cb20bee0ad26e36d,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: missEffect
+      value: 
+      objectReference: {fileID: 5131541194638933675, guid: 8e54e9c4ed9b5ac44b5643412b636b26,
+        type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: perfectHitEffect
+      value: 
+      objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e26d63e01463d4892817e004108377, type: 3}

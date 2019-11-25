@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         NoteHit();
     }
 
-    public void NoteHit()
+    private void NoteHit()
     {
         combo++;
         if (multiplierTracker % multiplierThreshold == 0)

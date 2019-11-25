@@ -126,7 +126,9 @@ public class GameManager : MonoBehaviour
             {
                 resultScreen.SetActive(true);
 
-                float acc = perfectHits / totalNotes;
+                float accPlayerScore = (scorePerNote * normalHits) + (scorePerGoodNote * goodHits) + (scorePerPerfectNote * perfectHits);
+                float accMaxScore = scorePerPerfectNote * totalNotes;
+                float acc = accPlayerScore / accMaxScore;
                 string rank;
                 resultScoreText.text = score.ToString();
                 resultNormalHitsText.text = normalHits.ToString();
@@ -135,19 +137,19 @@ public class GameManager : MonoBehaviour
                 resultMissedHitsText.text = missedHits.ToString();
                 resultAccuracyText.text = $"{ (acc * 100).ToString("F1") }%";
 
-                if (0.95 < acc)
+                if (0.95 <= acc)
                 {
                     rank = "S";
                 }
-                else if (0.90 < acc)
+                else if (0.90 <= acc)
                 {
                     rank = "A";
                 }
-                else if (0.85 < acc)
+                else if (0.85 <= acc)
                 {
                     rank = "B";
                 }
-                else if (0.80 < acc)
+                else if (0.80 <= acc)
                 {
                     rank = "C";
                 }

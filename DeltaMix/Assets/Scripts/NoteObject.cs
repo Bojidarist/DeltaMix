@@ -31,7 +31,7 @@ public class NoteObject : MonoBehaviour
                     GameManager.Instance.NormalHit();
                     Instantiate(hitEffect, gameObject.transform.position, hitEffect.transform.rotation);
                 }
-                else if (Mathf.Abs(transform.position.y) > 0.05)
+                else if (Mathf.Abs(transform.position.y) > 0.1)
                 {
                     Debug.Log("Good hit");
                     GameManager.Instance.GoodHit();

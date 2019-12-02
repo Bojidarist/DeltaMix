@@ -1661,6 +1661,7 @@ MonoBehaviour:
   defaultSprite: {fileID: 21300000, guid: 74fcd1cc342a32f4a8640977121f3388, type: 3}
   pressedSprite: {fileID: 21300000, guid: 9908817c6a31f4a47afccd70765feecf, type: 3}
   keyToPress: 107
+  side: 1
 --- !u!61 &1215771330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2322,6 +2323,7 @@ MonoBehaviour:
   defaultSprite: {fileID: 21300000, guid: a0d760a160fc56b4385a314368614310, type: 3}
   pressedSprite: {fileID: 21300000, guid: acf534d695d422d478149e4861f87e7c, type: 3}
   keyToPress: 102
+  side: 0
 --- !u!61 &1915482281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2461,6 +2463,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
         type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3761316902645463288, guid: 26e26d63e01463d4892817e004108377,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2727,6 +2734,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5582470732195004215, guid: e2f0083ea72b57c4f8f91cae2d2b8a8f,
         type: 3}
+    - target: {fileID: 3268973039203472476, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3761316902645463288, guid: 26e26d63e01463d4892817e004108377,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2745,7 +2757,7 @@ PrefabInstance:
     - target: {fileID: 3761316902645463291, guid: 26e26d63e01463d4892817e004108377,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3761316902645463291, guid: 26e26d63e01463d4892817e004108377,
         type: 3}

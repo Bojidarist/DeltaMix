@@ -87,7 +87,8 @@ public class GameManager : MonoBehaviour
         resultPerfectHitsText, resultMissedHitsText, resultScoreText, resultRankText;
 
     // Notes
-    public Queue<NoteObject> notes = new Queue<NoteObject>();
+    public Queue<NoteObject> leftNotes = new Queue<NoteObject>();
+    public Queue<NoteObject> rightNotes = new Queue<NoteObject>();
     public bool noteInRange = false;
 
     // Awake is called before Start
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!resultScreen.activeInHierarchy && !music.isPlaying && GameManager.Instance.notes.Count == 0)
+            if (!resultScreen.activeInHierarchy && !music.isPlaying && GameManager.Instance.leftNotes.Count == 0 && GameManager.Instance.rightNotes.Count == 0)
             {
                 resultScreen.SetActive(true);
 

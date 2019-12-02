@@ -10,6 +10,9 @@ public class NoteObject : MonoBehaviour
     public GameObject perfectHitEffect;
     public GameObject missEffect;
 
+    [SerializeField]
+    public Sides side;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,14 @@ public class NoteObject : MonoBehaviour
     {
         if (collision.tag == "Activator")
         {
-            GameManager.Instance.notes.Enqueue(this);
+            if (side == Sides.LEFT)
+            {
+                GameManager.Instance.leftNotes.Enqueue(this);
+            }
+            else
+            {
+                GameManager.Instance.rightNotes.Enqueue(this);
+            }
             canBePressed = true;
         }
         else if (collision.tag == "MissTrigger")
@@ -42,7 +52,14 @@ public class NoteObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.notes.Dequeue();
+        if (side == Sides.LEFT)
+        {
+            GameManager.Instance.leftNotes.Dequeue();
+        }
+        else
+        {
+            GameManager.Instance.rightNotes.Dequeue();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

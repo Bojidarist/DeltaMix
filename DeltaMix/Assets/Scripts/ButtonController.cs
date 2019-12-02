@@ -22,6 +22,9 @@ public class ButtonController : MonoBehaviour
     /// </summary>
     public KeyCode keyToPress;
 
+    [SerializeField]
+    public Sides side;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +40,15 @@ public class ButtonController : MonoBehaviour
 
             if (GameManager.Instance.noteInRange)
             {
-                NoteObject note = GameManager.Instance.notes.Peek();
+                NoteObject note;
+                if (side == Sides.LEFT)
+                {
+                    note = GameManager.Instance.leftNotes.Peek();
+                }
+                else
+                {
+                    note = GameManager.Instance.rightNotes.Peek();
+                }
                 if (note.keyToPress == keyToPress)
                 {
                     GameManager.Instance.JudgeNote(note);

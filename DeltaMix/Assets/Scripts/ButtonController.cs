@@ -38,6 +38,11 @@ public class ButtonController : MonoBehaviour
         {
             spriteRenderer.sprite = pressedSprite;
 
+            if (IsNotesQueueEmpty())
+            {
+                return;
+            }
+
             if (GameManager.Instance.noteInRange)
             {
                 NoteObject note;
@@ -59,6 +64,18 @@ public class ButtonController : MonoBehaviour
         else if (Input.GetKeyUp(keyToPress))
         {
             spriteRenderer.sprite = defaultSprite;
+        }
+    }
+
+    private bool IsNotesQueueEmpty()
+    {
+        if (side == Sides.LEFT)
+        {
+            return GameManager.Instance.leftNotes.Count == 0;
+        }
+        else
+        {
+            return GameManager.Instance.rightNotes.Count == 0;
         }
     }
 }

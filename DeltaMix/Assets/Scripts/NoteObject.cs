@@ -52,6 +52,7 @@ public class NoteObject : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.Instance.noteInRange = false;
         if (side == Sides.LEFT)
         {
             GameManager.Instance.leftNotes.Dequeue();

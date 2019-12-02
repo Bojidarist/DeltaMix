@@ -237,6 +237,5 @@ public class GameManager : MonoBehaviour
         combo = 0;
         comboText.text = $"Combo: { combo }";
         missedHits++;
-        Debug.Log("Note missed");
     }
 }

@@ -168,6 +168,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void JudgeNote(NoteObject note)
+    {
+        if (Mathf.Abs(note.transform.position.y) > 0.5)
+        {
+            NoteMissed();
+            Instantiate(note.missEffect, note.gameObject.transform.position, note.missEffect.transform.rotation);
+        }
+        else if (Mathf.Abs(note.transform.position.y) > 0.25)
+        {
+            NormalHit();
+            Instantiate(note.hitEffect, note.gameObject.transform.position, note.hitEffect.transform.rotation);
+        }
+        else if (Mathf.Abs(note.transform.position.y) > 0.1)
+        {
+            GoodHit();
+            Instantiate(note.goodHitEffect, note.gameObject.transform.position, note.goodHitEffect.transform.rotation);
+        }
+        else
+        {
+            PerfectHit();
+            Instantiate(note.perfectHitEffect, note.gameObject.transform.position, note.perfectHitEffect.transform.rotation);
+        }
+    }
+
     public void NormalHit()
     {
         score += scorePerNote * scoreMultiplier;

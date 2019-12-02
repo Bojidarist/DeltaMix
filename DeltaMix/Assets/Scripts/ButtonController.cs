@@ -34,8 +34,41 @@ public class ButtonController : MonoBehaviour
         if (Input.GetKeyDown(keyToPress))
         {
             spriteRenderer.sprite = pressedSprite;
+
+            if (GameManager.Instance.noteInRange)
+            {
+                NoteObject note = GameManager.Instance.notes.Peek();
+                if (note.keyToPress == keyToPress)
+                {
+                    if (Mathf.Abs(note.transform.position.y) > 0.5)
+                    {
+                        Debug.Log("Miss");
+                        GameManager.Instance.NoteMissed();
+                        Instantiate(note.missEffect, note.gameObject.transform.position, note.missEffect.transform.rotation);
+                    }
+                    else if (Mathf.Abs(note.transform.position.y) > 0.25)
+                    {
+                        Debug.Log("Normal hit");
+                        GameManager.Instance.NormalHit();
+                        Instantiate(note.hitEffect, note.gameObject.transform.position, note.hitEffect.transform.rotation);
+                    }
+                    else if (Mathf.Abs(note.transform.position.y) > 0.1)
+                    {
+                        Debug.Log("Good hit");
+                        GameManager.Instance.GoodHit();
+                        Instantiate(note.goodHitEffect, note.gameObject.transform.position, note.goodHitEffect.transform.rotation);
+                    }
+                    else
+                    {
+                        Debug.Log("Perfect hit");
+                        GameManager.Instance.PerfectHit();
+                        Instantiate(note.perfectHitEffect, note.gameObject.transform.position, note.perfectHitEffect.transform.rotation);
+                    }
+                    Destroy(note.gameObject);
+                }
+            }
         }
-        if (Input.GetKeyUp(keyToPress))
+        else if (Input.GetKeyUp(keyToPress))
         {
             spriteRenderer.sprite = defaultSprite;
         }

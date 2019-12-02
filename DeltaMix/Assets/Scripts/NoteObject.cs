@@ -19,31 +19,9 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress))
+        if (canBePressed == true)
         {
-            if (canBePressed)
-            {
-                gameObject.SetActive(false);
-
-                if (Mathf.Abs(transform.position.y) > 0.25)
-                {
-                    Debug.Log("Normal hit");
-                    GameManager.Instance.NormalHit();
-                    Instantiate(hitEffect, gameObject.transform.position, hitEffect.transform.rotation);
-                }
-                else if (Mathf.Abs(transform.position.y) > 0.1)
-                {
-                    Debug.Log("Good hit");
-                    GameManager.Instance.GoodHit();
-                    Instantiate(goodHitEffect, gameObject.transform.position, goodHitEffect.transform.rotation);
-                }
-                else
-                {
-                    Debug.Log("Perfect hit");
-                    GameManager.Instance.PerfectHit();
-                    Instantiate(perfectHitEffect, gameObject.transform.position, perfectHitEffect.transform.rotation);
-                }
-            }
+            GameManager.Instance.noteInRange = true;
         }
     }
 
@@ -51,8 +29,20 @@ public class NoteObject : MonoBehaviour
     {
         if (collision.tag == "Activator")
         {
+            GameManager.Instance.notes.Enqueue(this);
             canBePressed = true;
         }
+        else if (collision.tag == "MissTrigger")
+        {
+            Destroy(this.gameObject);
+            GameManager.Instance.NoteMissed();
+            Instantiate(missEffect, gameObject.transform.position, missEffect.transform.rotation);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.notes.Dequeue();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -60,12 +50,6 @@ public class NoteObject : MonoBehaviour
         if (collision.tag == "Activator")
         {
             canBePressed = false;
-
-            if (gameObject.activeSelf)
-            {
-                GameManager.Instance.NoteMissed();
-                Instantiate(missEffect, gameObject.transform.position, missEffect.transform.rotation);
-            }
         }
     }
 }

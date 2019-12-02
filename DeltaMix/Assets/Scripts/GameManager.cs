@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -85,6 +86,10 @@ public class GameManager : MonoBehaviour
     public Text resultAccuracyText, resultNormalHitsText, resultGoodHitsText,
         resultPerfectHitsText, resultMissedHitsText, resultScoreText, resultRankText;
 
+    // Notes
+    public Queue<NoteObject> notes = new Queue<NoteObject>();
+    public bool noteInRange = false;
+
     // Awake is called before Start
     private void Awake()
     {
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!resultScreen.activeInHierarchy && !music.isPlaying)
+            if (!resultScreen.activeInHierarchy && !music.isPlaying && GameManager.Instance.notes.Count == 0)
             {
                 resultScreen.SetActive(true);
 

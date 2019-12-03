@@ -53,13 +53,17 @@ public class NoteObject : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.noteInRange = false;
-        if (side == Sides.LEFT)
+        if (!IsNotesQueueEmpty())
         {
-            GameManager.Instance.leftNotes.Dequeue();
-        }
-        else
-        {
-            GameManager.Instance.rightNotes.Dequeue();
+
+            if (side == Sides.LEFT)
+            {
+                GameManager.Instance.leftNotes.Dequeue();
+            }
+            else
+            {
+                GameManager.Instance.rightNotes.Dequeue();
+            }
         }
     }
 
@@ -68,6 +72,18 @@ public class NoteObject : MonoBehaviour
         if (collision.tag == "Activator")
         {
             canBePressed = false;
+        }
+    }
+
+    private bool IsNotesQueueEmpty()
+    {
+        if (side == Sides.LEFT)
+        {
+            return GameManager.Instance.leftNotes.Count == 0;
+        }
+        else
+        {
+            return GameManager.Instance.rightNotes.Count == 0;
         }
     }
 }

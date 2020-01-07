@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     public AudioSource music;
 
     /// <summary>
+    /// The volume of the music
+    /// </summary>
+    [SerializeField, GetSet(nameof(MusicVolume))]
+    private float _musicVolume = 1f;
+    public float MusicVolume { get { return _musicVolume; } set { _musicVolume = value; music.volume = value; } }
+
+    /// <summary>
     /// Indicates if the player started playing
     /// </summary>
     public bool startPlaying;

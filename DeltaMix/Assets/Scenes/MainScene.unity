@@ -1359,6 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 592956684}
+  _musicVolume: 1
   startPlaying: 0
   beatScroller: {fileID: 1386804267}
   score: 0

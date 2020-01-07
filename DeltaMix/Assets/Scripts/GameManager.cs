@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -137,42 +138,56 @@ public class GameManager : MonoBehaviour
         {
             if (!resultScreen.activeInHierarchy && !music.isPlaying && GameManager.Instance.leftNotes.Count == 0 && GameManager.Instance.rightNotes.Count == 0)
             {
-                resultScreen.SetActive(true);
-
-                float accPlayerScore = (scorePerNote * normalHits) + (scorePerGoodNote * goodHits) + (scorePerPerfectNote * perfectHits);
-                float accMaxScore = scorePerPerfectNote * totalNotes;
-                float acc = accPlayerScore / accMaxScore;
-                string rank;
-                resultScoreText.text = score.ToString();
-                resultNormalHitsText.text = normalHits.ToString();
-                resultGoodHitsText.text = goodHits.ToString();
-                resultPerfectHitsText.text = perfectHits.ToString();
-                resultMissedHitsText.text = missedHits.ToString();
-                resultAccuracyText.text = $"{ (acc * 100).ToString("F1") }%";
-
-                if (0.95 <= acc)
-                {
-                    rank = "S";
-                }
-                else if (0.90 <= acc)
-                {
-                    rank = "A";
-                }
-                else if (0.85 <= acc)
-                {
-                    rank = "B";
-                }
-                else if (0.80 <= acc)
-                {
-                    rank = "C";
-                }
-                else
-                {
-                    rank = "D";
-                }
-
-                resultRankText.text = rank;
+                FinishSong();
             }
+        }
+    }
+
+    private void FinishSong()
+    {
+        OpenResultScreen(CalculateAccuracy());
+    }
+
+    private void OpenResultScreen(float accuracy)
+    {
+        resultScreen.SetActive(true);
+        resultScoreText.text = score.ToString();
+        resultNormalHitsText.text = normalHits.ToString();
+        resultGoodHitsText.text = goodHits.ToString();
+        resultPerfectHitsText.text = perfectHits.ToString();
+        resultMissedHitsText.text = missedHits.ToString();
+        resultAccuracyText.text = $"{ (accuracy * 100).ToString("F1") }%";
+        resultRankText.text = CalculateRank(accuracy);
+    }
+
+    public float CalculateAccuracy()
+    {
+        float accPlayerScore = (scorePerNote * normalHits) + (scorePerGoodNote * goodHits) + (scorePerPerfectNote * perfectHits);
+        float accMaxScore = scorePerPerfectNote * totalNotes;
+        return accPlayerScore / accMaxScore;
+    }
+
+    public string CalculateRank(float acc)
+    {
+        if (0.95 <= acc)
+        {
+            return "S";
+        }
+        else if (0.90 <= acc)
+        {
+            return "A";
+        }
+        else if (0.85 <= acc)
+        {
+            return "B";
+        }
+        else if (0.80 <= acc)
+        {
+            return "C";
+        }
+        else
+        {
+            return "D";
         }
     }
 
@@ -244,5 +259,59 @@ public class GameManager : MonoBehaviour
         combo = 0;
         comboText.text = $"Combo: { combo }";
         missedHits++;
+    }
+
+    public NoteObject PeekNote(Sides side)
+    {
+        switch (side)
+        {
+            case Sides.LEFT:
+                return leftNotes.Peek();
+            case Sides.RIGHT:
+                return rightNotes.Peek();
+            default:
+                throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in PeekNote()");
+        }
+    }
+
+    public void EnqueueNote(NoteObject note)
+    {
+        switch (note.side)
+        {
+            case Sides.LEFT:
+                leftNotes.Enqueue(note);
+                break;
+            case Sides.RIGHT:
+                rightNotes.Enqueue(note);
+                break;
+            default:
+                throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), note.side) } in EnqueueNote()");
+        }
+    }
+
+    public NoteObject DequeueNote(Sides side)
+    {
+        switch (side)
+        {
+            case Sides.LEFT:
+                return leftNotes.Dequeue();
+            case Sides.RIGHT:
+                return rightNotes.Dequeue();
+            default:
+                throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in DequeueNote()");
+        }
+    }
+
+    public int GetNotesCount(Sides side)
+    {
+        switch (side)
+        {
+            case Sides.LEFT:
+                return leftNotes.Count;
+            case Sides.RIGHT:
+                return rightNotes.Count;
+            default:
+                throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in GetNotesCount()");
+        }
     }
 }

@@ -2,22 +2,27 @@
 
 public class NoteObject : MonoBehaviour
 {
+    /// <summary>
+    /// Indicates if the note can be pressed
+    /// </summary>
     public bool canBePressed;
+
+    /// <summary>
+    /// The key required for the note to be pressed
+    /// </summary>
     public KeyCode keyToPress;
 
+    // Hit effects
     public GameObject hitEffect;
     public GameObject goodHitEffect;
     public GameObject perfectHitEffect;
     public GameObject missEffect;
 
+    /// <summary>
+    /// The note's side
+    /// </summary>
     [SerializeField]
     public Sides side;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,14 +37,7 @@ public class NoteObject : MonoBehaviour
     {
         if (collision.tag == "Activator")
         {
-            if (side == Sides.LEFT)
-            {
-                GameManager.Instance.leftNotes.Enqueue(this);
-            }
-            else
-            {
-                GameManager.Instance.rightNotes.Enqueue(this);
-            }
+            GameManager.Instance.EnqueueNote(this);
             canBePressed = true;
         }
         else if (collision.tag == "MissTrigger")
@@ -53,17 +51,9 @@ public class NoteObject : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.noteInRange = false;
-        if (!IsNotesQueueEmpty())
+        if (GameManager.Instance.GetNotesCount(side) != 0)
         {
-
-            if (side == Sides.LEFT)
-            {
-                GameManager.Instance.leftNotes.Dequeue();
-            }
-            else
-            {
-                GameManager.Instance.rightNotes.Dequeue();
-            }
+            GameManager.Instance.DequeueNote(side);
         }
     }
 
@@ -72,18 +62,6 @@ public class NoteObject : MonoBehaviour
         if (collision.tag == "Activator")
         {
             canBePressed = false;
-        }
-    }
-
-    private bool IsNotesQueueEmpty()
-    {
-        if (side == Sides.LEFT)
-        {
-            return GameManager.Instance.leftNotes.Count == 0;
-        }
-        else
-        {
-            return GameManager.Instance.rightNotes.Count == 0;
         }
     }
 }

@@ -22,6 +22,9 @@ public class ButtonController : MonoBehaviour
     /// </summary>
     public KeyCode keyToPress;
 
+    /// <summary>
+    /// The button's side
+    /// </summary>
     [SerializeField]
     public Sides side;
 
@@ -38,22 +41,13 @@ public class ButtonController : MonoBehaviour
         {
             spriteRenderer.sprite = pressedSprite;
 
-            if (IsNotesQueueEmpty())
+            if (GameManager.Instance.GetNotesCount(side) == 0)
             {
                 return;
             }
-
-            if (GameManager.Instance.noteInRange)
+            else if (GameManager.Instance.noteInRange)
             {
-                NoteObject note;
-                if (side == Sides.LEFT)
-                {
-                    note = GameManager.Instance.leftNotes.Peek();
-                }
-                else
-                {
-                    note = GameManager.Instance.rightNotes.Peek();
-                }
+                NoteObject note = GameManager.Instance.PeekNote(side);
                 if (note.keyToPress == keyToPress)
                 {
                     GameManager.Instance.JudgeNote(note);
@@ -64,18 +58,6 @@ public class ButtonController : MonoBehaviour
         else if (Input.GetKeyUp(keyToPress))
         {
             spriteRenderer.sprite = defaultSprite;
-        }
-    }
-
-    private bool IsNotesQueueEmpty()
-    {
-        if (side == Sides.LEFT)
-        {
-            return GameManager.Instance.leftNotes.Count == 0;
-        }
-        else
-        {
-            return GameManager.Instance.rightNotes.Count == 0;
         }
     }
 }

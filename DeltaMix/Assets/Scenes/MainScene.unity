@@ -2848,6 +2848,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3761316902645463288, guid: 26e26d63e01463d4892817e004108377,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3761316902645463289, guid: 26e26d63e01463d4892817e004108377,
         type: 3}
       propertyPath: m_Name

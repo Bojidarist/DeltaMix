@@ -273,7 +273,7 @@ namespace DeltaMix.Core
                 case Sides.RIGHT:
                     return rightNotes.Peek();
                 default:
-                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in PeekNote()");
+                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) }");
             }
         }
 
@@ -288,7 +288,7 @@ namespace DeltaMix.Core
                     rightNotes.Enqueue(note);
                     break;
                 default:
-                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), note.side) } in EnqueueNote()");
+                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), note.side) }");
             }
         }
 
@@ -301,7 +301,7 @@ namespace DeltaMix.Core
                 case Sides.RIGHT:
                     return rightNotes.Dequeue();
                 default:
-                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in DequeueNote()");
+                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) }");
             }
         }
 
@@ -314,7 +314,7 @@ namespace DeltaMix.Core
                 case Sides.RIGHT:
                     return rightNotes.Count;
                 default:
-                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) } in GetNotesCount()");
+                    throw new ArgumentException($"Invalid side { Enum.GetName(typeof(Sides), side) }");
             }
         }
     }
